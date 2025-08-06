@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    //Submit button will be disabled until the input is filled
+    document.querySelector('#submit').disabled = true;
+
+    document.querySelector('#inputName').onkeyup = () =>{
+        //It wont be clickable after i delete text 
+        if (document.querySelector('#inputName').value.length > 0){
+        document.querySelector('#submit').disabled = false;
+    } else{
+        document.querySelector('#submit').disabled = true;
+    }
+}
+  document.querySelector('form').onsubmit = () => {
+    let inputName = document.querySelector('#inputName').value;
+    
+    let li = document.createElement('li');
+    li.innerHTML = inputName;
+
+      document.querySelector('#name').append(li);    
+      document.querySelector('#inputName').value = '';
+      document.querySelector('#submit').disabled = true;  
+      
+    // Stop form from submitting so it doesnt overlap and delete the submitted name
+      return false;
+} 
+});
+    </script>
+</head>
+<body>
+    
+        <ul id="name"></ul>
+
+        <form action="">
+        <input id="inputName" type="text" placeholder="name">
+        <input type="submit" id="submit">
+        </form>
+
+</body>
+</html>
