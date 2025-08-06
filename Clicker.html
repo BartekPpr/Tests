@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 80vh;
+      margin: 0;
+    }
+    button {
+      background-color: #feac32;
+      background-image: linear-gradient(#fecc4c, #ffac33);
+      border: 5px solid #feac32;
+      padding: 10px 40px;
+      font-size: 50px;
+      font-weight: bold;
+      margin: 20px;
+    }
+    p{
+          font-size: 50px;
+          margin: 0;
+        }
+        @keyframes grow{
+          0%{font-size: 50px;} 
+          50%{font-size: 60px;} 
+          100%{font-size: 50px;}
+        }
+    </style>
+</head>
+<body>
+      <div><p></p></div>
+      <div><button>Touch me!</button></div>
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function(){
+        count.innerHTML = `Touch Count: ${localStorage.getItem('counter')}`;
+      })
+      let counter = localStorage.getItem('counter');
+      let button = document.querySelector('button');
+      let count = document.querySelector('p');
+      button.addEventListener('click', function(){
+          counter++;     
+
+          count.style.animation = 'none'; 
+          void count.offsetWidth;   // RESET ANIMATION SO IT RUNS EACH TIME THE BUTTON IS CLICKED 
+          count.style.animation = 'grow 1s ease-in-out';
+     
+        localStorage.setItem('counter', counter);
+        count.innerHTML = `Touch Count: ${counter}`;
+            })
+          
+     </script> 
+</body>
+</html>
